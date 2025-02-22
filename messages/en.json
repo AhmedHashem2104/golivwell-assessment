@@ -1,0 +1,78 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "products": "Products",
+    "didYouKnow": "Did you know?"
+  },
+  "home": {
+    "title": "FRESH COFFEE IN THE MORNING",
+    "description": "Coffee is more than a drink; it's a moment of peace, a spark of inspiration, and fuel for the soul.",
+    "cta": "Click to order"
+  },
+  "menu": {
+    "title": "Enjoy a new blend of coffee style",
+    "subtitle": "Explore all flavours of coffee with us. There is always a new cup worth experiencing",
+    "orderNow": "Order Now"
+  },
+  "didYouKnow": {
+    "title": "Did You Know?",
+    "content": [
+      "Coffee Is One Of The Most Widely Consumed Beverages In The World, Known For Its Stimulating Effects Due To Caffeine, A Natural Stimulant That Enhances Alertness And Reduces Fatigue. Beyond Its Ability To Keep You Awake, Coffee Has Numerous Health Benefits Backed By Scientific Research.",
+      "One Of The Most Notable Benefits Of Coffee Is Its Rich Antioxidant Content. Coffee Is A Major Source Of Antioxidants In Many People's Diets, Often Surpassing Even Fruits And Vegetables In Terms Of Daily Intake. These Antioxidants, Such As Chlorogenic Acid And Polyphenols, Help Combat Oxidative Stress And Inflammation, Reducing The Risk Of Chronic Diseases Like Heart Disease And Cancer.",
+      "Regular Coffee Consumption Has Also Been Linked To Improved Brain Function. Caffeine Blocks An Inhibitory Neurotransmitter Called Adenosine, Leading To Increased Levels Of Other Neurotransmitters Like Dopamine And Norepinephrine. This Results In Improved Mood, Memory, Reaction Time, And Overall Cognitive Performance.",
+      "Additionally, Long-Term Coffee Consumption May Lower The Risk Of Neurodegenerative Diseases Like Alzheimer's And Parkinson's By Protecting Brain Cells From Damage.",
+      "Coffee Is Also Beneficial For Metabolism And Physical Performance. Caffeine Boosts Metabolic Rate And Increases Fat Oxidation, Making It A Common Ingredient In Weight Loss Supplements. Furthermore, Caffeine Stimulates The Release Of Adrenaline, Preparing The Body For Physical Exertion. Studies Have Shown That Drinking Coffee Before Exercise Can Improve Endurance And Performance, Making It Popular Among Athletes.",
+      "Moreover, Coffee May Lower The Risk Of Several Serious Diseases. Research Suggests That Habitual Coffee Drinkers Have A Reduced Risk Of Type 2 Diabetes Due To Improved Insulin Sensitivity And Glucose Metabolism. Additionally, Coffee Has Been Associated With A Lower Risk Of Liver Diseases, Including Liver Cirrhosis And Liver Cancer. Some Studies Even Indicate That Coffee Drinkers Have A Lower Risk Of Depression And Suicide, Possibly Due To Its Positive Effects On Brain Chemistry.",
+      "Despite Its Benefits, Coffee Should Be Consumed In Moderation. Excessive Caffeine Intake Can Lead To Side Effects Like Insomnia, Increased Heart Rate, And Anxiety. However, For Most People, Drinking 3-4 Cups Of Coffee Per Day Is Generally Considered Safe And Beneficial.",
+      "Overall, Coffee Is More Than Just A Beloved Morning Ritual; It's A Powerful Beverage With Numerous Health Advantages, Contributing To Longevity And Overall Well-Being."
+    ]
+  },
+  "product": {
+    "ingredients": "Ingredients",
+    "price": "Price",
+    "checkout": "Check out"
+  },
+  "payment": {
+    "title": "Payment methods",
+    "expDate": "Exp. date:",
+    "pay": "PAY",
+    "bank": "Bank",
+    "type": {
+      "mastercard": "Mastercard",
+      "visa": "Visa"
+    }
+  },
+  "paymentSuccess": {
+    "title": "Payment Successful",
+    "message": "Your payment has been processed successfully. Thank you for your purchase!",
+    "close": "Close"
+  },
+  "coffeeMenu": {
+    "cappuccino": "Cappuccino",
+    "chaiLatte": "Chai Latte",
+    "macchiato": "Macchiato",
+    "espresso": "Espresso",
+    "ratio": "Coffee {coffee}% | Milk {milk}%"
+  },
+  "productDetail": {
+    "title": "Chai Latte",
+    "ingredients": {
+      "blackTea": "Black tea (commonly Assam or Darjeeling)",
+      "milk": "Milk (dairy or plant-based)",
+      "sweetener": "Sweetener (sugar, honey, or syrup)",
+      "spicesTitle": "Spices, typically including:",
+      "spices": {
+        "cinnamon": "Cinnamon",
+        "cardamom": "Cardamom",
+        "ginger": "Ginger",
+        "cloves": "Cloves",
+        "blackPepper": "Black pepper",
+        "starAnise": "Star anise (optional)"
+      }
+    },
+    "priceLabel": "Price:",
+    "priceValue": "$8.50",
+    "checkout": "Checkout"
+  }
+}

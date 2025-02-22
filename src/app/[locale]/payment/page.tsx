@@ -5,38 +5,40 @@ import { Button } from "@/components/ui/button"
 import { useState } from "react"
 import PaymentSuccessModal from "@/components/payment-success-modal"
 import { redirect } from "next/navigation"
-
-const paymentMethods = [
-    {
-        type: "Mastercard",
-        number: "5432",
-        expDate: "12/20",
-        bank: "United Bank",
-        bgColor: "bg-[#1a1f36]",
-        logo: "/mastercard.png?height=40&width=40",
-    },
-    {
-        type: "Visa",
-        number: "4291",
-        expDate: "12/20",
-        bank: "United Bank",
-        bgColor: "bg-[#4169e1]",
-        logo: "/visa.png?height=40&width=40",
-    },
-]
+import { useLocale, useTranslations } from "next-intl"
 
 export default function Payment() {
+    const t = useTranslations("payment")
     const [showSuccess, setShowSuccess] = useState(false)
+    const locale = useLocale()
 
     const handlePayment = () => {
-        // Simulate payment processing
         setShowSuccess(true)
     }
+
+    const paymentMethods = [
+        {
+            type: t("type.mastercard"),
+            number: "5432",
+            expDate: "12/20",
+            bank: t("bank"),
+            bgColor: "bg-[#1a1f36]",
+            logo: "/mastercard.png?height=40&width=40",
+        },
+        {
+            type: t("type.visa"),
+            number: "4291",
+            expDate: "12/20",
+            bank: t("bank"),
+            bgColor: "bg-[#4169e1]",
+            logo: "/visa.png?height=40&width=40",
+        },
+    ]
 
     return (
         <section className="container mx-auto px-4 py-16">
             <div className="w-1/2 p-6 rounded-xl mx-auto bg-[#FFFFFF]">
-                <h1 className="text-4xl font-bold mb-12 text-black">Payment methods</h1>
+                <h1 className="text-4xl font-bold mb-12 text-black">{t("title")}</h1>
 
                 <div className="space-y-6">
                     {paymentMethods.map((method, index) => (
@@ -68,7 +70,7 @@ export default function Payment() {
                                     </h3>
                                 </div>
                                 <div className="flex items-center gap-2 text-[#27272E]">
-                                    <span>Exp. date:</span>
+                                    <span>{t("expDate")}</span>
                                     <span className="font-medium text-[#27272E]">{method.expDate}</span>
                                 </div>
                             </div>
@@ -77,15 +79,20 @@ export default function Payment() {
                 </div>
 
                 <div className="mt-12 justify-center flex">
-                    <Button onClick={handlePayment} className="w-1/2 bg-coffee hover:bg-coffee-dark text-black font-semibold py-6 text-xl rounded-xl">
-                        PAY
+                    <Button
+                        onClick={handlePayment}
+                        className="w-1/2 bg-coffee hover:bg-coffee-dark text-black font-semibold py-6 text-xl rounded-xl"
+                    >
+                        {t("pay")}
                     </Button>
                 </div>
             </div>
-            <PaymentSuccessModal isOpen={showSuccess} onClose={() => {
-                redirect("/products")
-            }} />
-
+            <PaymentSuccessModal
+                isOpen={showSuccess}
+                onClose={() => {
+                    redirect(`/${locale}/products`)
+                }}
+            />
         </section>
     )
 }

@@ -1,31 +1,41 @@
-'use client'
-import { usePathname } from 'next/navigation'
+"use client";
 import Image from "next/image"
 import Link from "next/link"
 import { Globe, Search, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLocale, useTranslations } from 'next-intl'
+import { usePathname, useRouter } from "next/navigation"
 
 
 const Navbar = () => {
+    const t = useTranslations("nav")
+    const locale = useLocale()
+    const router = useRouter()
     const pathname = usePathname()
+
     const links = [
         {
             href: "/",
-            text: "Home",
+            text: t("home"),
         },
         {
             href: "/menu",
-            text: "Menu",
+            text: t("menu"),
         },
         {
             href: "/products",
-            text: "Products",
+            text: t("products"),
         },
         {
             href: "/did-you-know",
-            text: "Did you know?",
+            text: t("didYouKnow"),
         },
     ]
+
+    const handleLanguageChange = (newLocale: string) => {
+        router.push(pathname.replace(`/${locale}`, `/${newLocale}`))
+    }
+
     return (
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
             <div className="flex items-center gap-8">
@@ -41,7 +51,12 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-8">
                     {
                         links.map((link) => (
-                            <Link key={link.href} href={link.href} className={`hover:text-coffee transition-colors ${pathname === link.href ? 'text-coffee' : ''}`}>
+                            <Link
+                                key={link.href}
+                                href={`/${locale}${link.href}`}
+                                className={`hover:text-coffee transition-colors ${pathname === `/${locale}${link.href}` ? "text-coffee" : ""
+                                    }`}
+                            >
                                 {link.text}
                             </Link>
                         ))
@@ -56,7 +71,7 @@ const Navbar = () => {
                 <Button variant="ghost" size="icon" className="hover:text-coffee">
                     <ShoppingCart className="h-5 w-5" />
                 </Button>
-                <Button variant="ghost" size="icon" className="hover:text-coffee">
+                <Button variant="ghost" size="icon" className="hover:text-coffee" onClick={() => handleLanguageChange(locale === "en" ? "ar" : "en")}>
                     <Globe className="h-5 w-5" />
                 </Button>
             </div>
