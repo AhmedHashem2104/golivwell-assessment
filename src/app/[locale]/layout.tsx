@@ -6,25 +6,25 @@ import Navbar from '@/components/layout/navbar';
 
 export default async function LocaleLayout({
     children,
-    params: { locale }
+    params
 }: {
     children: React.ReactNode;
-    params: { locale: string };
+    params: { locale: string } | Promise<{ locale: string }>;
 }) {
+    const resolvedParams = await params; // Await in case it's a Promise
+
     // Ensure that the incoming `locale` is valid
-    if (!routing.locales.includes(locale as "en" | "ar")) {
+    if (!routing.locales.includes(resolvedParams.locale as "en" | "ar")) {
         notFound();
     }
 
     // Providing all messages to the client
-    // side is the easiest way to get started
     const messages = await getMessages();
 
     return (
-        <div lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
-            <NextIntlClientProvider locale={locale} messages={messages}>
+        <div lang={resolvedParams.locale} dir={resolvedParams.locale === "ar" ? "rtl" : "ltr"}>
+            <NextIntlClientProvider locale={resolvedParams.locale} messages={messages}>
                 <Navbar />
-
                 {children}
             </NextIntlClientProvider>
         </div>
