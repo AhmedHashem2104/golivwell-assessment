@@ -1,0 +1,92 @@
+"use client"
+
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { useState } from "react"
+import PaymentSuccessModal from "@/components/payment-success-modal"
+import { redirect } from "next/navigation"
+
+const paymentMethods = [
+    {
+        type: "Mastercard",
+        number: "5432",
+        expDate: "12/20",
+        bank: "United Bank",
+        bgColor: "bg-[#1a1f36]",
+        logo: "/mastercard.png?height=40&width=40",
+    },
+    {
+        type: "Visa",
+        number: "4291",
+        expDate: "12/20",
+        bank: "United Bank",
+        bgColor: "bg-[#4169e1]",
+        logo: "/visa.png?height=40&width=40",
+    },
+]
+
+export default function Payment() {
+    const [showSuccess, setShowSuccess] = useState(false)
+
+    const handlePayment = () => {
+        // Simulate payment processing
+        setShowSuccess(true)
+    }
+
+    return (
+        <section className="container mx-auto px-4 py-16">
+            <div className="w-1/2 p-6 rounded-xl mx-auto bg-[#FFFFFF]">
+                <h1 className="text-4xl font-bold mb-12 text-black">Payment methods</h1>
+
+                <div className="space-y-6">
+                    {paymentMethods.map((method, index) => (
+                        <div key={index} className="border rounded-2xl p-6 flex items-center gap-8 w-3/4 mx-auto">
+                            <div className={`${method.bgColor} text-white p-4 rounded-xl w-64 h-40 relative`}>
+                                <div className="absolute top-4 left-4">
+                                    <div className="text-sm opacity-80">{method.bank}</div>
+                                    <div className="mt-1">
+                                        <div className="w-12 h-8 bg-white/20 rounded-md" />
+                                    </div>
+                                </div>
+                                <div className="absolute bottom-4 left-4 right-4">
+                                    <div className="flex justify-between items-center">
+                                        <div className="text-lg">{method.number}</div>
+                                        <Image
+                                            src={method.logo || "/placeholder.svg"}
+                                            alt={method.type}
+                                            width={40}
+                                            height={40}
+                                            className="w-10 h-10"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex-1">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h3 className="text-xl font-semibold text-[#27272E]">
+                                        {method.type}: {method.number}
+                                    </h3>
+                                </div>
+                                <div className="flex items-center gap-2 text-[#27272E]">
+                                    <span>Exp. date:</span>
+                                    <span className="font-medium text-[#27272E]">{method.expDate}</span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-12 justify-center flex">
+                    <Button onClick={handlePayment} className="w-1/2 bg-coffee hover:bg-coffee-dark text-black font-semibold py-6 text-xl rounded-xl">
+                        PAY
+                    </Button>
+                </div>
+            </div>
+            <PaymentSuccessModal isOpen={showSuccess} onClose={() => {
+                redirect("/products")
+            }} />
+
+        </section>
+    )
+}
+
